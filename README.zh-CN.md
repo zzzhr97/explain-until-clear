@@ -2,8 +2,8 @@
 
 [English](README.md)
 
-这是一个双语 Codex Skill，用于通过互动逐步弄懂复杂或陌生的主题。它会先依据现有材料建立事实基础，
-每次只解释一个概念，并在继续之前确认用户是否真正理解。它不仅适用于代码，也适用于系统、论文、
+这是一个双语 Codex Skill，用于通过互动逐步弄懂复杂或陌生的主题。它会先查看现有材料，每次只解释
+一个概念，再让用户选择继续还是换一种方式重讲当前概念。它不仅适用于代码，也适用于系统、论文、
 数学、产品、商业以及其他领域。
 
 ## 推荐开启 Plan 模式
@@ -13,14 +13,24 @@
 
 ## 工作方式
 
-1. 检查可用材料，找到用户眼下真正困惑的位置。
-2. 在内部整理知识依赖关系，但不一次性倾倒完整大纲。
-3. 先用直白语言讲解当前最小且有用的概念，必要时再补充精确机制和具体例子。
-4. 每次只进行一个自适应理解检查，然后等待用户回应。
-5. 根据回应决定继续、回退到前置概念，还是换一种讲法。
+1. 先查看相关材料，再开始解释。
+2. 用户已经提出具体问题时，直接回答，不先做问卷。
+3. 每次只解释一个相关概念，然后请用户选择一个简短状态：`清楚了，继续`、
+   `还不清楚，再讲讲`或`换个角度解释`。
+4. 用户可以补充一句具体没听懂的地方，也可以只点选状态。
+5. 用户选择清楚后进入下一个概念；选择不清楚后，换一种方式重讲当前概念。
 
-理解检查先采用自然的询问。当概念很关键，或用户的回答暴露出不确定时，Codex 可以请用户做简短
-复述、举例、预测结果或回答一个单选问题。整个过程应当像共同讨论，而不是考试。
+理解检查只是用户自报状态，不是考试。用户不需要复述讲解、证明自己已经理解、做题或回复一大段话。
+
+## 演示
+
+![中文 Plan 模式学习会话](assets/demo-zh-CN.png)
+
+这张纵向裁剪的会话截图来自一次真实的 Codex CLI Plan 模式会话。演示材料是公开仓库
+[`fastapi/full-stack-fastapi-template`](https://github.com/fastapi/full-stack-fastapi-template)，
+固定在提交
+[`d506ea4883c0f7bfcf5280921cfc407c46808711`](https://github.com/fastapi/full-stack-fastapi-template/commit/d506ea4883c0f7bfcf5280921cfc407c46808711)。
+截图展示了用户通过补充文字指出局部疑问，Codex 针对这一点重新解释，并再次给出三个状态选项。
 
 ## 安装
 
@@ -40,20 +50,20 @@ cp -R explain-until-clear-zh ~/.codex/skills/
 
 ```text
 使用 $explain-until-clear-zh。我想弄懂这个项目的 Docker 是什么逻辑。请先查看相关材料，
-每次只解释一个概念，确认我理解后再继续。
+每次只解释一个概念，再让我选择继续还是换一种讲法。
 ```
 
 英文版：
 
 ```text
 Use $explain-until-clear. I want to understand how this project's Docker setup works.
-Inspect the relevant sources first, then teach me one concept at a time and check my
-understanding before continuing.
+Inspect the relevant sources first, then explain one concept at a time and let me choose whether
+to continue or hear it another way.
 ```
 
 这个 Skill 同样适用于非代码主题：
 
 ```text
-使用 $explain-until-clear-zh 帮我弄懂统计显著性。从我已经知道的内容开始，每次只使用一个
-具体例子；当前概念没有讲清楚之前，不要进入下一个概念。
+使用 $explain-until-clear-zh 帮我弄懂统计显著性。每次只解释一个概念，再让我选择继续还是换一种
+方式重讲当前概念。
 ```
