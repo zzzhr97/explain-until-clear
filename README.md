@@ -1,11 +1,9 @@
 # Explain Until Clear
 
-[简体中文](README.zh-CN.md)
-
-A bilingual Codex Skill for learning difficult subjects interactively. It checks the available
-material, explains one concept at a time, and lets the user choose whether to continue or hear the
-current concept another way. It works for code, systems, papers, mathematics, products, business
-topics, and other unfamiliar domains.
+A Codex and Claude Code Skill for learning difficult subjects interactively. It checks the
+available material, explains one concept at a time, and lets the user choose whether to continue
+or hear the current concept another way. It works for code, systems, papers, mathematics,
+products, business topics, and other unfamiliar domains.
 
 ## Recommended: use Plan mode
 
@@ -39,31 +37,23 @@ requesting a written response.
 
 ## Install
 
-Clone this repository, then install either language version or both:
+Clone the repository directly into a host's Skill directory. The repository root is the Skill
+root and contains `SKILL.md`:
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -R explain-until-clear ~/.codex/skills/
-cp -R explain-until-clear-zh ~/.codex/skills/
+git clone git@github.com:zzzhr97/explain-until-clear.git \
+  ~/.codex/skills/explain-until-clear
 ```
 
-Start a new Codex session after installation so the Skills are discovered.
+For Claude Code, use `~/.claude/skills/explain-until-clear` instead. Start a new session after
+installation so the host discovers the Skill.
 
 ## Use
-
-English Skill:
 
 ```text
 Use $explain-until-clear. I want to understand how this project's Docker setup works.
 Inspect the relevant sources first, then explain one concept at a time and let me choose whether
 to continue or hear it another way.
-```
-
-Chinese Skill:
-
-```text
-使用 $explain-until-clear-zh。我想弄懂这个项目的 Docker 是什么逻辑。请先查看相关材料，
-每次只解释一个概念，再让我选择继续还是换一种讲法。
 ```
 
 You can also invoke the Skill for non-code topics:
