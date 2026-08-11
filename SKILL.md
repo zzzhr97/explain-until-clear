@@ -1,6 +1,6 @@
 ---
 name: explain-until-clear
-description: "Guide a user through unfamiliar code, systems, papers, technical mechanisms, or other complex subjects by inspecting the relevant material, explaining one concept at a time, and using simple self-reported understanding checks to decide what to explain next."
+description: "Guide a user through unfamiliar code, systems, papers, or technical mechanisms by delegating research to subagents and explaining one concept at a time with dynamic next-step options."
 ---
 
 # Explain Until Clear
@@ -20,8 +20,7 @@ synthesize and explain to the user. This keeps the conversation free of tool-cal
      the user knows what they'll get. Usually one; up to three when there are genuinely distinct
      branches.
    - **Switch topic** (always last) — the user names something else entirely.
-3. Typical set is 3 options (1 + 1 + 1); max 5 (1 + 3 + 1) when branching warrants it.
-4. Repeat until the user's goal is met or they stop.
+3. Repeat until the user's goal is met or they stop.
 
 ## Constraints
 
