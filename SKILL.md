@@ -5,22 +5,25 @@ description: "Guide a user through unfamiliar code, systems, papers, technical m
 
 # Explain Until Clear
 
-Use the user's language and match their apparent level. Treat understanding requests as read-only
-unless the user separately asks for changes.
+## Research delegation
 
-1. Inspect the relevant code, documents, data, or other available material before explaining.
-2. If the user has already asked a specific question, answer it directly instead of starting with
-   an intake questionnaire.
-3. Explain one relevant concept, then stop for an understanding check before moving to another.
-4. In Plan mode, call `request_user_input` with these three short status options:
+Never read files, grep, or inspect material directly. Spawn a subagent (Agent tool) for all
+research — reading code, searching symbols, fetching docs. Collect the subagent's findings, then
+synthesize and explain to the user. This keeps the conversation free of tool-call noise.
+
+## Explanation loop
+
+1. If the user already asked a specific question, answer it directly — no intake questionnaire.
+2. Explain one concept at a time, then pause with an understanding check:
    - `Clear, continue`
    - `Still unclear, explain more`
    - `Explain from another angle`
-5. Outside Plan mode, show the same three options as ordinary text.
+3. On "clear", advance to the next concept. On either unclear option or a follow-up question,
+   stay on the current concept and re-explain differently.
+4. Repeat until the user's goal is met or they stop.
 
-Let the user use the question tool's free-text entry to name a specific unclear point. Never ask
-them to restate the explanation, prove their understanding, take a quiz, or write a long reply.
+## Constraints
 
-When the user chooses `Clear, continue`, explain the next relevant concept. When they choose either
-unclear option or add a specific question, stay on the current concept and explain it differently.
-Repeat this loop until the user's goal is met or they choose to stop.
+- Match the user's language and apparent level.
+- Read-only — do not modify code unless separately asked.
+- Never ask the user to restate, prove understanding, or take a quiz.
