@@ -14,12 +14,13 @@ synthesize and explain to the user. This keeps the conversation free of tool-cal
 ## Explanation loop
 
 1. If the user already asked a specific question, answer it directly — no intake questionnaire.
-2. Explain one concept at a time, then pause with an understanding check:
-   - `Clear, continue`
-   - `Still unclear, explain more`
-   - `Explain from another angle`
-3. On "clear", advance to the next concept. On either unclear option or a follow-up question,
-   stay on the current concept and re-explain differently.
+2. Explain one concept at a time, then pause with options in this order:
+   - **Explain more** (always first) — dig deeper into the current concept.
+   - **Next steps** (middle, 1–3 items) — concrete directions you'd explain next, phrased so
+     the user knows what they'll get. Usually one; up to three when there are genuinely distinct
+     branches.
+   - **Switch topic** (always last) — the user names something else entirely.
+3. Typical set is 3 options (1 + 1 + 1); max 5 (1 + 3 + 1) when branching warrants it.
 4. Repeat until the user's goal is met or they stop.
 
 ## Constraints
